@@ -1,0 +1,9 @@
+1.npx create-expo-app -t expo-template-blank-typescript
+2.npx expo install react-native-screens react-native-safe-area-context react-native-reanimated
+3. npm install @react-navigation/native @react-navigation/stack
+cards
+4.npm i reanimated-masonry-list
+5. npx expo install react-native-gesture-handler
+
+@react-native-seoul/masonry-list
+ npx expo install expo-blur
