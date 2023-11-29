@@ -7,6 +7,7 @@ import MasonryList from '@react-native-seoul/masonry-list';
 import { BlurView } from "expo-blur";
 import { BottomSheetModal } from "@gorhom/bottom-sheet"
 import { BottomSheet } from 'react-native-btr';
+import FilterView from '../src/components/FilterView'
 const category = ["Clothing", "Shoes", "Accessories", "Fashion", "Offer", "Brand"]
 const Home = () => {
     const { colors } = useTheme();
@@ -18,7 +19,8 @@ const Home = () => {
             bottomSheetModalRef.current?.present();
         }
     }, [bottomSheetModalRef.current]);
-    const [visible, setVisible] = useState(false);
+
+    const [visible, setVisible] = useState(true);
     const toggleBottomNavigationView = () => {
         setVisible(!visible);
     };
@@ -124,44 +126,8 @@ const Home = () => {
                     onBackButtonPress={toggleBottomNavigationView}
                     onBackdropPress={toggleBottomNavigationView}
                 >
-                    <View >
-                        <Text>Awesome 🎉</Text>
-                    </View>
-                    <MasonryList
-                        data={[12, 32, 13, 15, 66]}
-                        keyExtractor={(item): string => item}
-                        numColumns={2}
-                        showsVerticalScrollIndicator={false}
-                        style={{ gap: 12 }}
-                        contentContainerStyle={{ paddingHorizontal: 16 }}
-                        renderItem={({ item, i }) => (
-                            <View style={{ padding: 6 }}>
-                                <View style={{ aspectRatio: i === 0 ? 1 : (2 / 3), position: "relative", overflow: "hidden", borderRadius: 24 }}>
-                                    <Image
-                                        source={Image6}
-                                        resizeMode='cover'
-                                        style={StyleSheet.absoluteFill}
-                                    />
-                                    <View style={[StyleSheet.absoluteFill, { padding: 12 }]}>
-                                        <View style={{ flexDirection: "row", gap: 8, padding: 4 }}>
-                                            <Text style={{ flex: 1, fontSize: 14, fontWeight: "600", color: colors.text }} numberOfLines={1}>PUMA Everyday Hassle</Text>
-                                            <View style={{ backgroundColor: colors.background, borderRadius: 100, height: 32, aspectRatio: 1, alignItems: "center", justifyContent: "center" }}>
-                                                <Icons name='favorite-border' size={20} color={colors.text} />
-                                            </View>
-                                        </View>
-                                        <View style={{ flex: 1 }} />
-                                        <BlurView style={{ flexDirection: "row", alignItems: "center", backgroundColor: "rgba(0,0,0,0.55)", padding: 8, borderRadius: 100, overflow: "hidden" }} intensity={20}>
-                                            <Text style={{ flex: 1, fontSize: 16, fontWeight: "600", color: "#fff", marginLeft: 4 }} numberOfLines={1}>$160.00</Text>
-                                            <TouchableOpacity style={{ paddingHorizontal: 16, paddingVertical: 6, borderRadius: 100, backgroundColor: "#fff" }}>
-                                                <Icons name='add-shopping-cart' size={20} color={"#000"} />
-                                            </TouchableOpacity>
-                                        </BlurView>
-                                    </View>
-                                </View>
-                            </View>
-                        )}
-                        onEndReachedThreshold={0.1}
-                    />
+                    <FilterView onClose={toggleBottomNavigationView} />
+
                 </BottomSheet>
             </ScrollView>
 
