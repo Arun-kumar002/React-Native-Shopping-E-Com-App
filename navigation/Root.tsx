@@ -1,15 +1,17 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigatorScreenParams } from '@react-navigation/native';
 import Tabs, { TabsStackParams } from './Tabs';
 import Details from '../screens/Details';
 export type RootStackParams = {
     TabStack: NavigatorScreenParams<TabsStackParams>;
-    DetailScreen: undefined
+    DetailScreen: { id: string }
 }
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
+
+export type RootScreenProps<T extends keyof RootStackParams> = NativeStackScreenProps<RootStackParams, T>;
 
 const Root = () => {
     return (

@@ -6,4 +6,4 @@ cards
 5. npx expo install react-native-gesture-handler
 
 @react-native-seoul/masonry-list
- npx expo install expo-blur
+npx expo install expo-blur
